@@ -1,0 +1,34 @@
+{
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": true,
+        "ignore": ["pnpm-lock.yaml"],
+        "attributePosition": "auto",
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf",
+        "lineWidth": 120
+    },
+    "javascript": {
+        "formatter": {
+            "arrowParentheses": "always",
+            "bracketSameLine": true,
+            "bracketSpacing": true,
+            "jsxQuoteStyle": "double",
+            "quoteProperties": "asNeeded",
+            "quoteStyle": "single",
+            "indentStyle": "space",
+            "semicolons": "always"
+        },
+        "parser": {
+            "unsafeParameterDecoratorsEnabled": true
+        }
+    },
+
+    "json": {
+        "formatter": {
+            "trailingCommas": "none",
+            "indentWidth": 4
+        }
+    }
+}

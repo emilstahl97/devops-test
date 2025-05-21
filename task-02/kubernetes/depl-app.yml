@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: localhost:5001/todo-backend:latest
+        name: backend
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: db
+        - name: DB_USER
+          value: root
+        - name: DB_PASSWORD
+          value: password
+        - name: DB_NAME
+          value: tododb
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: localhost:5001/todo-frontend:latest
+        name: frontend
+        ports:
+        - containerPort: 80

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Stats Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .date-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-card h2 {
+            margin: 5px 0;
+            color: #4caf50;
+            font-size: 24px;
+        }
+
+        .stat-card p {
+            margin: 0;
+            color: #666;
+        }
+
+        .error-message {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1>Todo Statistics Dashboard</h1>
+            <a href="/" class="back-button" style="padding: 8px 12px; background-color: #4caf50; color: white; border: none; border-radius: 4px; text-decoration: none;">Back to Todo List</a>
+        </div>
+
+        <div class="date-filter">
+            <input type="date" id="date-select">
+            <button id="apply-filter">Filter by Date</button>
+        </div>
+
+        <% if (stats && stats.length > 0) { %>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Total Tasks</p>
+                    <h2><%= stats[0].total || 0 %></h2>
+                </div>
+                <div class="stat-card">
+                    <p>Completed Tasks</p>
+                    <h2><%= stats[0].completed || 0 %></h2>
+                </div>
+                <div class="stat-card">
+                    <p>Completion Rate</p>
+                    <h2><%= stats[0].completion_rate ? (stats[0].completion_rate * 100).toFixed(2) + '%' : 'N/A' %></h2>
+                </div>
+                <div class="stat-card">
+                    <p>Avg Task Length</p>
+                    <h2><%= stats[0].avg_length ? Math.round(stats[0].avg_length) : 'N/A' %></h2>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="error-message">
+                <p>No statistics available. Try another date or add some tasks first.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        document.getElementById('apply-filter').addEventListener('click', function() {
+            const dateValue = document.getElementById('date-select').value;
+            if (dateValue) {
+                window.location.href = `/dashboard?date=${dateValue}`;
+            }
+        });
+
+        // Set initial date value
+        document.getElementById('date-select').value = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
