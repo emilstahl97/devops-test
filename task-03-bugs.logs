@@ -1,0 +1,6 @@
+Identified and fixed several issues:
+Typo in frontend deployment replicas (replica vs replicas).
+Incorrect image tag (latest vs task03) for the dashboard.
+Incorrect database password (passwond vs password).
+Mismatched database service port and backend configuration.
+Incorrect table name (to_dos vs todos) in the backend statistics query.
