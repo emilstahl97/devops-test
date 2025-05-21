@@ -1,0 +1,20 @@
+# Task 2 Log
+\n## Build and Push Docker Images
+\n### Frontend
+cd task-02/frontend
+docker build -t localhost:5001/todo-frontend:latest .
+docker push localhost:5001/todo-frontend:latest
+\n### Backend
+cd ../backend
+docker build -t localhost:5001/todo-backend:latest .
+docker push localhost:5001/todo-backend:latest
+\n## Deploy to Kubernetes
+cd ../kubernetes  # Or cd /home/emilstahl/Github/devops-test/task-02/kubernetes
+kubectl apply -f depl-db.yml
+kubectl apply -f depl-app.yml
+kubectl apply -f services.yml
+\n## Verify Deployment
+kubectl get pods # Initial check
+kubectl get pods # Second check, after waiting a bit
+\n# Navigate back to project root
+cd /home/emilstahl/Github/devops-test/
