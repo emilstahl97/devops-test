@@ -16,7 +16,7 @@ spec:
         app: dashboard
     spec:
       containers:
-      - image: localhost:5001/todo-dashboard:latest
+      - image: localhost:5001/todo-dashboard:task03
         name: dashboard
         ports:
         - containerPort: 8080

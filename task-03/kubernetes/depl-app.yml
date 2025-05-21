@@ -16,7 +16,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: localhost:5001/todo-backend:latest
+      - image: localhost:5001/todo-backend:task03
         name: backend
         ports:
         - containerPort: 3000
@@ -26,7 +26,7 @@ spec:
         - name: DB_USER
           value: root
         - name: DB_PASSWORD
-          value: passwond
+          value: password
         - name: DB_NAME
           value: tododb
 ---
@@ -37,7 +37,7 @@ metadata:
     app: frontend
   name: frontend
 spec:
-  replica: 1
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -47,7 +47,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: localhost:5001/todo-frontend:latest
+      - image: localhost:5001/todo-frontend:task03
         name: frontend
         ports:
         - containerPort: 80

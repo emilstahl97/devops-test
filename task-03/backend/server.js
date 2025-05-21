@@ -149,7 +149,7 @@ app.get('/api/stats', async (req, res) => {
         COUNT(*) as total_tasks,
         SUM(completed = 1) as completed_tasks,
         AVG(LENGTH(task)) as avg_task_length
-      FROM to_dos
+      FROM todos
     `;
 
         const { date_filter } = req.query;
