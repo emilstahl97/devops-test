@@ -18,4 +18,4 @@ When you successfully complete this task, you should:
 
 ## Secret Value
 
-Secret value:
+Secret value: fb2f4484d432c17ce2f385db75c0a05a819a0db2cf54474d167139d4a2eda538
