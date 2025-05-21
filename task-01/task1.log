@@ -1,0 +1,20 @@
+--- kind get clusters ---
+kind
+Kubernetes control plane is running at https://127.0.0.1:45161
+CoreDNS is running at https://127.0.0.1:45161/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+--- kubectl get nodes ---
+NAME                 STATUS   ROLES           AGE     VERSION
+kind-control-plane   Ready    control-plane   2m41s   v1.33.1
+--- kubectl get pods -A ---
+NAMESPACE            NAME                                         READY   STATUS    RESTARTS   AGE
+kube-system          coredns-674b8bbfcf-9k4hh                     1/1     Running   0          2m36s
+kube-system          coredns-674b8bbfcf-hmv4f                     1/1     Running   0          2m36s
+kube-system          etcd-kind-control-plane                      1/1     Running   0          2m45s
+kube-system          kindnet-v9p7p                                1/1     Running   0          2m36s
+kube-system          kube-apiserver-kind-control-plane            1/1     Running   0          2m45s
+kube-system          kube-controller-manager-kind-control-plane   1/1     Running   0          2m43s
+kube-system          kube-proxy-7v45n                             1/1     Running   0          2m36s
+kube-system          kube-scheduler-kind-control-plane            1/1     Running   0          2m43s
+local-path-storage   local-path-provisioner-7dc846544d-sxlqz      1/1     Running   0          2m36s
